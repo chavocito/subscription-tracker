@@ -1,11 +1,13 @@
 import express, { Request, Response } from 'express';
 import { routes } from './routes';
+import errorMiddleware from './middleware/error.middleware';
 
 const app = express();
 
-app.use('api/v1/auth', routes.authRouter);
-app.use('api/v1/users', routes.userRouter);
-app.use('api/v1/subscriptions', routes.subscriptionRouter);
+app.use(express.json());
+app.use('api/v1/auth', errorMiddleware, routes.authRouter);
+app.use('api/v1/users', errorMiddleware, routes.userRouter);
+app.use('api/v1/subscriptions', errorMiddleware, routes.subscriptionRouter);
 
 app.get('/', (req: Request, res: Response) => {
     res.send("bye-Felicia")
