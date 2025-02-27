@@ -10,14 +10,9 @@ generator client {
 }
 
 generator zod {
-  provider              = "zod-prisma"
-  output                = "./zod"
-  relationalModel       = true
-  modelCase             = "PascalCase"
-  modelSuffix           = "Model"
-  useDecimals           = true
-  imports               = null
-  prismaJsonNullability = true
+  provider = "zod-prisma"
+  output   = "./zod"
+  import   = "../src/zod-schemas"
 }
 
 datasource db {
