@@ -13,7 +13,7 @@ const errorMiddleware = (err: unknown, req: Request, res: Response, next: NextFu
         if (err instanceof Error) {
             error = {
                 message: err.message,
-                status: 500,
+                status: err.co,
                 stack: err.stack
             };
         }
@@ -25,3 +25,5 @@ const errorMiddleware = (err: unknown, req: Request, res: Response, next: NextFu
         next(error);
     }
 }
+
+export default errorMiddleware;
